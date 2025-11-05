@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Aplicacion Symphony AC | Guía</title>
+  <meta name="description" content="Guía paso a paso de como gestionar el personal en la aplicacion Symphony AC.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aplicacion Symphony AC | Guía">
+  <meta property="og:description" content="Guía paso a paso de como gestionar el personal en la aplicacion Symphony AC.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Gu%C3%ADa+Symphony+AC">
+  <meta property="og:locale" content="es_ES">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' ry='16' fill='%230d3256'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='64' fill='%23ff7a00'%3EAC%3C/text%3E%3C/svg%3E">
+
+  <!--Codigo CSS-->
+  <style>
+    /* Reglas base */
+    *, *::before, *::after { box-sizing: border-box; }
+    html:focus-within { scroll-behavior: smooth; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; color: #0E1B2A; background: #FFFFFF; }
+    img { max-width: 100%; height: auto; display: block; border-radius: 8px; transition: all 0.3s ease; }
+    /* Zoom leve al pasar el cursor sobre la imagen y eliminacion de blur*/
+    img:hover {transform: scale(1.02);cursor: pointer;}
+
+    :root {
+      --brand-blue-950: #0B2545;
+      --brand-blue-900: #0B2545; /* navy principal */
+      --brand-blue-800: #123A66; /* navy secundario */
+      --brand-blue-700: #18477b;
+      --brand-orange: #ff7a00; /* acento */
+      --brand-orange-2: #ff8a33; /* acento claro */
+      --text-900: #0e1a2b;
+      --text-700: #46546b;
+      --surface: #ffffff;
+      --border: #e5e7eb;
+      --radius: .75rem;
+      --radius-sm: .5rem;
+      --shadow-sm: 0 10px 30px rgba(0,0,0,.08);
+      --shadow-md: 0 8px 24px rgba(13,50,86,.12);
+      --shadow-elev: 0 12px 30px rgba(0,0,0,.2);
+      --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
+      --maxw: 1100px;
+    }
+
+    .container { width: min(100% - 40px, var(--maxw)); margin-inline: auto; }
+
+    /* Barra superior con gradiente */
+    .topbar { background: linear-gradient(90deg, var(--brand-blue-900), var(--brand-blue-800)); color: #cfe3ff; font-size: .95rem; box-shadow: var(--shadow-md); }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 0; }
+    .brand { display: inline-flex; align-items: center; gap: .2rem; color: #fff; text-decoration: none; font-weight: 800; letter-spacing: .3px; font-size: 1.15rem; }
+    .brand em { color: var(--brand-orange); font-style: normal; font-weight: 800; }
+    .top-links { display: inline-flex; gap: 18px; }
+    .top-links a { color: #fff; text-decoration: none; font-weight: 700; }
+    .top-links a:hover, .top-links a:focus { color: #FFD7BA; outline: none; }
+
+    /* Cabecera de guía con tamaños fijados */
+    .guide-hero { background: radial-gradient(900px 380px at 10% 0%, rgba(255,106,0,.18) 0%, transparent 60%), linear-gradient(180deg, var(--brand-blue-900) 0%, var(--brand-blue-800) 100%); color: #fff; padding: 64px 0 28px; position: relative; overflow: hidden; }
+    .guide-hero .badge { display: inline-block; background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-2)); color: #1b1b1b; border-radius: 999px; padding: 6px 10px; font-weight: 800; font-size: 12px; text-transform: uppercase; box-shadow: var(--shadow-elev); }
+    .guide-title { margin: 12px 0 8px; font-size: clamp(28px, 4vw, 42px); line-height: 1.15; font-weight: 700; letter-spacing: .2px; }
+    .guide-title span { color: var(--brand-orange); }
+    .guide-subtitle { margin: 0 0 18px; color: #E9F1FF; font-size: 1.05rem; }
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn { appearance: none; border-radius: 10px; padding: 12px 16px; border: 2px solid transparent; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--brand-orange); color: #1b1b1b; box-shadow: var(--shadow-elev); border-radius: 999px;}
+    .btn-primary:hover { background: var(--brand-orange-2);}
+    .btn-ghost { background: transparent; color: #fff; border-color: #FFFFFF66; box-shadow: inset 0 1px 0 rgba(255,255,255,.18); border-radius: 999px; }
+    .btn-ghost:hover { background: #FFFFFF20; }
+    .guide-meta { margin-top: 10px; font-size: 1rem; color: #cfe3ff; }
+
+    /* Tarjetas secciones */
+    .section { padding: var(--space-8) 0; }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+    .card-head { background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-2)); color: #1b1b1b; padding: .6rem .9rem; font-weight: 700; border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); display: flex; align-items: center; gap: .6rem; font-size: 22px;}
+    .card-body { padding: var(--space-6); }
+
+    /* Índice */
+    .index-list { margin: 0; padding-left: 0; color: var(--text-700); counter-reset: idx; list-style: none; }
+    .index-list li { margin: .35rem 0; counter-increment: idx; display: flex; align-items: center; gap: .6rem; }
+    .index-list li::before { content: counter(idx, decimal-leading-zero); width: 28px; height: 28px; border-radius: 999px; background: var(--brand-blue-900); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: .8rem; flex: 0 0 28px; }
+    .index-list a { color: inherit; text-decoration: none; display: inline-block; padding: 3px 6px; border-radius: 6px; transition: background .15s ease, color .15s ease, box-shadow .15s ease; }
+    .index-list a:hover, .index-list a:focus { color: var(--brand-orange); background: #fff8ef; outline: none; text-decoration: none; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+    .index-list a:focus-visible { box-shadow: 0 0 0 2px #ffd7ba; }
+
+    /* Pasos */
+    .step { overflow: hidden; }
+    .step + .step { margin-top: var(--space-4); }
+    .step-head { display: flex; align-items: center; gap: .75rem; background: #fff7f1; color: #1B1B1B; border-bottom: 1px solid var(--border); padding: .6rem .9rem; font-weight: 800; }
+    .step-num { width: 28px; height: 28px; display: grid; place-items: center; background: var(--brand-blue-900); color: #fff; border-radius: 999px; font-weight: 700; border: none; }
+    .step-body { display: grid; gap: var(--space-4); grid-template-columns: 1fr 360px; padding: var(--space-6);align-items: center; }
+    .step-body p { margin: 0; color: var(--text-700); }
+    .screenshot { background: #fff; border: 1px solid rgba(11,37,69,.10); border-radius: 10px; height: 140px; display: grid; place-items: center; color: #7a8aa6; font-size: .9rem; box-shadow: 0 6px 22px rgba(0,0,0,.12); overflow: hidden; transition: transform 0.2s ease;}
+    .screenshot img {max-height: 100%; width: auto; border-radius: 10px; object-fit: contain;}
+
+    .step-body {
+      display: flex;
+      flex-direction: row;
+      gap: var(--space-4);
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .step-body p {
+      flex: 1 1 100%;
+      margin: 0;
+      color: var(--text-700);
+    }
+
+    /* Contenedor de contenedores de imagen */
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Contenedor de imagen */
+    .screenshot {
+      flex: 1 1 45%; /* dos por fila aprox */
+      height: auto;
+    }
+
+    /* Rellenar contenedor cuando la imagen es mas pequeña */
+    .screenshot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Notas */
+    .note { padding: var(--space-4); border: 1px dashed #ffd7b0; background: #fff8ef; border-radius: var(--radius); }
+    .note-ttl { display: inline; font-weight: 900; color: #8a4100; margin-right: 6px; }
+    .note-ttl::after { content: ":"; }
+    .note > div:not(.note-ttl) { display: inline; }
+
+    /* Pie */
+    footer { margin-top: 32px; padding: 18px 0; color: #DBE6F4; background: #0A213B; }
+
+    /* Onda decorativa */
+    .hero-wave { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; pointer-events: none; }
+
+    /* Fondo difuminado al abrir imagen */
+    .zoom-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .zoom-wrapper {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .zoom-wrapper img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.25s ease;
+      user-select: none;
+      touch-action: none; /* evita desplazamiento accidental en móviles */
+    }
+
+    /* Devuelve el cursor a su forma original cuando la imagen esta agrandada */
+    .zoom-wrapper img:hover {transform: scale(1.02);cursor: default;}
+
+    /*Evita que en pdf se corte el contenido en las hojas, y agrandar imagenes juntas*/
+    @media print {
+      .step,
+      .note,
+      .screenshot {
+        break-inside: avoid;
+        flex: 1 1 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar" role="banner">
+    <div class="container topbar-inner">
+      <a class="brand" href="#" aria-label="Inicio">
+        INFOSERV <em>CORP</em>
+      </a>
+      <nav aria-label="Enlaces superiores" class="top-links">
+        <a href="#indice">Índice</a>
+        <a href="#pasos">Pasos</a>
+        <a href="#notas">Notas</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="guide-hero">
+    <div class="container">
+      <span class="badge">GUÍA INFOSERV</span>
+      <h1 class="guide-title">Aplicacion <span>Symphony AC</span></h1>
+      <p class="guide-subtitle">Gestion de horarios - Los Horarios se usan para definir cuándo algo puede funcionar o estar activo.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#pasos">Ver pasos</a>
+        <button class="btn btn-ghost" onclick="window.print()">Imprimir</button>
+      </div>
+      <p class="guide-meta">Autor: <strong>Gonzalo Pereira</strong> · Actualizado: 29/10/2025</p>
+    </div>
+    <svg class="hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" height="45px" width="auto">
+      <defs>
+        <linearGradient id="grad-orange" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#FF6A00"/>
+          <stop offset="100%" stop-color="#FF8A33"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#grad-orange)" d="M0,32 C240,64 480,0 720,24 C960,48 1200,24 1440,40 L1440,60 L0,60 Z"></path>
+    </svg>
+  </section>
+
+  <main>
+    <section id="indice" class="section">
+      <div class="container">
+        <div class="card">
+          <div class="card-head">Índice</div>
+          <div class="card-body">
+            <ol class="index-list">
+              <li><a href="#p1">Dirigirse a gestión de horarios</a></li>
+              <li><a href="#p2">Seleccionar un nuevo horario</a></li>
+              <li><a href="#p3">Definir horario</a></li>
+              <li><a href="#p4">Guardar cambios</a></li>
+              <li><a href="#p5">Editar horario</a></li>
+              <li><a href="#p6">Eliminar horario</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pasos" class="section">
+      <div class="container">
+        <div class="card">
+          <div class="card-head">Pasos detallados:</div>
+          <div class="card-body" style="display:grid; gap: var(--space-4);">
+            <div class="step card" id="p1">
+              <div class="step-head"><span class="step-num">1</span> Dirigirse a gestión de horarios</div>
+              <div class="step-body">
+                <p>
+                  1- En la aplicación, diríjase a la sección <strong>Accesos</strong>.<br>
+                  2- Haga clic derecho dentro de esta sección para desplegar el menú de opciones.<br>
+                  3- En el menú, seleccione la opción <strong>Horarios</strong> haciendo clic derecho.
+                </p>
+                <img src="1- Acceso horarios.png" alt="Accesos - Gestion de horarios">
+              </div>
+            </div>
+
+            <div class="step card" id="p2">
+              <div class="step-head"><span class="step-num">2</span> Seleccionar un nuevo horario</div>
+              <div class="step-body">
+                <p>
+                  1- Desbloquee el módulo haciendo clic derecho sobre el ícono del <strong>candado</strong>.<br>
+                  2- Una vez desbloqueado el módulo, haga clic derecho sobre el botón desplegable de <strong>Región</strong> para seleccionar la región correspondiente.<br>
+                  &nbsp;&nbsp;&nbsp;• En caso de que la región sea siempre la misma, puede omitir este paso.<br>
+                  3- A continuación, haga clic derecho sobre el botón desplegable de <strong>Horario</strong> seguido de un número (X) y seleccione un horario vacío para modificar.<br>
+                    &nbsp;&nbsp;&nbsp;• Podrá identificar un horario vacío porque aparecerá con el nombre “<strong>Time Schedule</strong>” seguido de un número (X).<br>
+                  4- Una vez seleccionado el horario, haga clic derecho sobre el botón con los tres puntos “<strong>...</strong>” que aparece junto a su nombre.<br>
+                  5- Se abrirá una nueva ventana en la que podrá editar el nombre del horario.<br>
+                  6- Una vez realizado el cambio, haga clic en “<strong>OK</strong>” para confirmar la modificación.<br>
+                  7- Al confirmar la modificacion, aparecerá una ventana de confirmación preguntando si desea guardar los cambios realizados. Seleccione la opción "<strong>Si</strong>” haciendo clic derecho para confirmar y guardar la configuración.
+                </p>
+                <div class="galeria">
+                  <div class="screenshot">
+                    <img src="2- Nuevo horario.png" alt="Seleccionar horario vacio">
+                  </div>
+                  <div class="screenshot">
+                    <img src="3- Nuevo horario 2.png" alt="Modificar nombre de horario">
+                  </div>
+                  <div class="screenshot">
+                    <img src="4- Nuevo horario 3.png" alt="Confirmar cambio de nombre">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step card" id="p3">
+              <div class="step-head"><span class="step-num">3</span> Definir horario</div>
+              <div class="step-body">
+                <p>
+                  1- A continuación, deberá definir los horarios a manejar.<br>
+                  2- Para ello, diríjase a la sección “<strong>Intervalos</strong>” y establezca los distintos horarios de trabajo que desee implementar.<br>
+                  3- Una vez definidos los horarios, podrá asignar los días en los que se aplicará cada uno.
+                </p>
+                <img src="5- Definir horario.png" alt="Definir horario">
+                <p>
+                  En la siguiente imagen se muestra un ejemplo en el cual definimos un horario laboral:<br>
+                  &nbsp;&nbsp;&nbsp;•De lunes a viernes, se establece una jornada de 8 horas.<br>
+                  &nbsp;&nbsp;&nbsp;•Los sábados, se establece una jornada de medio turno.<br>
+                  En la parte de inferior se mostratra un recuadro grafico en el cual mostrara el resultado final del horario establecido.
+                </p>
+                <img src="6- Horario de ejemplo.png" alt="Horario de ejemplo">
+              </div>
+            </div>
+
+            <div class="step card" id="p4">
+              <div class="step-head"><span class="step-num">4</span> Guardar cambios</div>
+              <div class="step-body">
+                <p>
+                  1- Haga clic derecho sobre el ícono de <strong>guardar</strong> para almacenar los cambios realizados.<br>
+                  2- Si no desea continuar trabajando, recuerde bloquear el módulo haciendo clic derecho sobre el ícono del <strong>candado</strong>.
+                </p>
+                <img src="7- Guardar cambios.png" alt="Guardar cambios">
+              </div>
+            </div>
+
+            <div class="step card" id="p5">
+              <div class="step-head"><span class="step-num">5</span> Editar horario</div>
+              <div class="step-body">
+                <p>
+                  1- Seleccione el horario que desea modificar.<br>
+                  2- Realice los ajustes necesarios según corresponda.<br>
+                  3- Una vez finalizados los cambios, guarde la configuración siguiendo el mismo procedimiento indicado en el <strong>paso número 4</strong>.<br>
+                </p>
+              </div>
+            </div>
+
+            <div class="step card" id="p6">
+              <div class="step-head"><span class="step-num">6</span> Eliminar horario</div>
+              <div class="step-body">
+                <p>
+                  1- Seleccione el horario que desea modificar.<br>
+                  2- Una vez seleccionado el horario, haga clic derecho sobre el ícono del <strong>basurero</strong>.<br>
+                  3- Aparecerá una ventana solicitando confirmar la eliminacion del horario.<br>
+                  4- Confirme la acción haciendo clic derecho en la opción "<strong>Yes</strong>".
+                </p>
+                <img src="8- Eliminar horario.png" alt="Eliminar horario">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="notas" class="section">
+      <div class="container">
+        <div class="card">
+          <div class="card-head">Notas útiles</div>
+          <div class="card-body" style="display:grid; gap: var(--space-4);">
+            <div class="note">
+              <div class="note-ttl">Consejo</div>
+              <div>
+                Si va a realizar varias tareas dentro de <strong>Horarios</strong>, desbloquee el módulo al iniciar. Una vez finalizadas todas las tareas, guarde los cambios y luego bloquee el módulo.
+              </div>
+            </div>
+            <div class="note">
+              <div class="note-ttl">Recordatorio</div>
+              <div>
+                Siempre que termine de trabajar, cierre el módulo haciendo clic derecho sobre el ícono del <strong>candado</strong>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      © <span id="y"></span> INFOSERV CORP · Hecho por <strong>Sandino Mañana y Gonzalo Pereira</strong>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const yearEl = document.getElementById('y');
+      if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+    })();
+
+      // --- Abrir imagen con fondo difuminado ---
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('click', () => {
+          const modal = document.getElementById('zoomModal');
+          const zoomImg = document.getElementById('zoomImg');
+          zoomImg.src = img.src;
+          zoomImg.style.transform = 'scale(1)';
+          modal.style.display = 'flex';
+        });
+      });
+
+    // --- Cerrar al hacer clic fuera ---
+    function closeZoom(e) {
+      if (e.target.id === 'zoomModal') {
+        document.getElementById('zoomModal').style.display = 'none';
+      }
+    }
+  </script>
+
+  <!-- Modal de imagen con fondo difuminado -->
+  <div id="zoomModal" class="zoom-modal" onclick="closeZoom(event)">
+    <div class="zoom-wrapper">
+      <img id="zoomImg" src="" alt="">
+    </div>
+  </div>
+</body>
+</html>
